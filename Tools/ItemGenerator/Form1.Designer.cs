@@ -56,7 +56,8 @@
             this.WeapNormal_L = new System.Windows.Forms.Label();
             this.WeapComAttrSlash_L = new System.Windows.Forms.Label();
             this.CombatStyle_Panel = new System.Windows.Forms.Panel();
-            this.LoadCombatStyle_Button = new System.Windows.Forms.Button();
+            this.EditCombatStyle = new System.Windows.Forms.Button();
+            this.LoadCombatStyleList_Button = new System.Windows.Forms.Button();
             this.AddCombatStyle_Button = new System.Windows.Forms.Button();
             this.CombatStyles_List = new System.Windows.Forms.ListBox();
             this.CombatStlePClass_Button = new System.Windows.Forms.Button();
@@ -68,7 +69,7 @@
             this.CreateCombatStyle_L = new System.Windows.Forms.Label();
             this.CombatStyleAnimIn_Text = new System.Windows.Forms.TextBox();
             this.CombatStyles_L = new System.Windows.Forms.Label();
-            this.CombatStyleSave_Button = new System.Windows.Forms.Button();
+            this.CombatStyleAddTo_Button = new System.Windows.Forms.Button();
             this.CombatStyleElemental_L = new System.Windows.Forms.Label();
             this.CombatStyleComAttrFireIn_Num = new System.Windows.Forms.NumericUpDown();
             this.CombatStyleComAttrFire_L = new System.Windows.Forms.Label();
@@ -230,6 +231,7 @@
             this.ItemGenImageIn_Text = new System.Windows.Forms.TextBox();
             this.ItemSaveAs_Button = new System.Windows.Forms.Button();
             this.ItemSave_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.WeaponPanel.SuspendLayout();
             this.SubWeaponPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WeapComAttrFireIn_Num)).BeginInit();
@@ -328,7 +330,7 @@
             this.WeaponPanel.Controls.Add(this.CombatStyle_Panel);
             this.WeaponPanel.Location = new System.Drawing.Point(3, 3);
             this.WeaponPanel.Name = "WeaponPanel";
-            this.WeaponPanel.Size = new System.Drawing.Size(890, 462);
+            this.WeaponPanel.Size = new System.Drawing.Size(890, 464);
             this.WeaponPanel.TabIndex = 46;
             // 
             // SubWeaponPanel
@@ -398,7 +400,7 @@
             this.WeapRemoveCombatStyle_Button.Name = "WeapRemoveCombatStyle_Button";
             this.WeapRemoveCombatStyle_Button.Size = new System.Drawing.Size(238, 23);
             this.WeapRemoveCombatStyle_Button.TabIndex = 39;
-            this.WeapRemoveCombatStyle_Button.Text = "Remove";
+            this.WeapRemoveCombatStyle_Button.Text = "Remove Combat Style";
             this.WeapRemoveCombatStyle_Button.UseVisualStyleBackColor = true;
             this.WeapRemoveCombatStyle_Button.Click += new System.EventHandler(this.WeapRemoveCombatStyle_Button_Click);
             // 
@@ -563,7 +565,9 @@
             // CombatStyle_Panel
             // 
             this.CombatStyle_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CombatStyle_Panel.Controls.Add(this.LoadCombatStyle_Button);
+            this.CombatStyle_Panel.Controls.Add(this.button1);
+            this.CombatStyle_Panel.Controls.Add(this.EditCombatStyle);
+            this.CombatStyle_Panel.Controls.Add(this.LoadCombatStyleList_Button);
             this.CombatStyle_Panel.Controls.Add(this.AddCombatStyle_Button);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyles_List);
             this.CombatStyle_Panel.Controls.Add(this.CombatStlePClass_Button);
@@ -575,7 +579,7 @@
             this.CombatStyle_Panel.Controls.Add(this.CreateCombatStyle_L);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyleAnimIn_Text);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyles_L);
-            this.CombatStyle_Panel.Controls.Add(this.CombatStyleSave_Button);
+            this.CombatStyle_Panel.Controls.Add(this.CombatStyleAddTo_Button);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyleElemental_L);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyleComAttrFireIn_Num);
             this.CombatStyle_Panel.Controls.Add(this.CombatStyleComAttrFire_L);
@@ -595,32 +599,43 @@
             this.CombatStyle_Panel.Controls.Add(this.CombatStyleComAttrNormal_L);
             this.CombatStyle_Panel.Location = new System.Drawing.Point(336, 21);
             this.CombatStyle_Panel.Name = "CombatStyle_Panel";
-            this.CombatStyle_Panel.Size = new System.Drawing.Size(541, 424);
+            this.CombatStyle_Panel.Size = new System.Drawing.Size(541, 427);
             this.CombatStyle_Panel.TabIndex = 22;
             // 
-            // LoadCombatStyle_Button
+            // EditCombatStyle
             // 
-            this.LoadCombatStyle_Button.Location = new System.Drawing.Point(100, 383);
-            this.LoadCombatStyle_Button.Name = "LoadCombatStyle_Button";
-            this.LoadCombatStyle_Button.Size = new System.Drawing.Size(92, 23);
-            this.LoadCombatStyle_Button.TabIndex = 70;
-            this.LoadCombatStyle_Button.Text = "Load";
-            this.LoadCombatStyle_Button.UseVisualStyleBackColor = true;
+            this.EditCombatStyle.Location = new System.Drawing.Point(18, 384);
+            this.EditCombatStyle.Name = "EditCombatStyle";
+            this.EditCombatStyle.Size = new System.Drawing.Size(175, 23);
+            this.EditCombatStyle.TabIndex = 71;
+            this.EditCombatStyle.Text = "Edit Combat Style";
+            this.EditCombatStyle.UseVisualStyleBackColor = true;
+            this.EditCombatStyle.Click += new System.EventHandler(this.LoadCombatStyle_Click);
+            // 
+            // LoadCombatStyleList_Button
+            // 
+            this.LoadCombatStyleList_Button.Location = new System.Drawing.Point(123, 355);
+            this.LoadCombatStyleList_Button.Name = "LoadCombatStyleList_Button";
+            this.LoadCombatStyleList_Button.Size = new System.Drawing.Size(69, 23);
+            this.LoadCombatStyleList_Button.TabIndex = 70;
+            this.LoadCombatStyleList_Button.Text = "Load List";
+            this.LoadCombatStyleList_Button.UseVisualStyleBackColor = true;
+            this.LoadCombatStyleList_Button.Click += new System.EventHandler(this.LoadCombatStyle_Button_Click);
             // 
             // AddCombatStyle_Button
             // 
-            this.AddCombatStyle_Button.Location = new System.Drawing.Point(17, 383);
+            this.AddCombatStyle_Button.Location = new System.Drawing.Point(17, 354);
             this.AddCombatStyle_Button.Name = "AddCombatStyle_Button";
-            this.AddCombatStyle_Button.Size = new System.Drawing.Size(67, 23);
+            this.AddCombatStyle_Button.Size = new System.Drawing.Size(100, 23);
             this.AddCombatStyle_Button.TabIndex = 40;
-            this.AddCombatStyle_Button.Text = "Add";
+            this.AddCombatStyle_Button.Text = "Add To Weapon";
             this.AddCombatStyle_Button.UseVisualStyleBackColor = true;
             this.AddCombatStyle_Button.Click += new System.EventHandler(this.AddCombatStyle_Button_Click);
             // 
             // CombatStyles_List
             // 
             this.CombatStyles_List.FormattingEnabled = true;
-            this.CombatStyles_List.Location = new System.Drawing.Point(17, 63);
+            this.CombatStyles_List.Location = new System.Drawing.Point(18, 48);
             this.CombatStyles_List.Name = "CombatStyles_List";
             this.CombatStyles_List.Size = new System.Drawing.Size(175, 303);
             this.CombatStyles_List.TabIndex = 17;
@@ -634,6 +649,7 @@
             this.CombatStlePClass_Button.TabIndex = 68;
             this.CombatStlePClass_Button.Text = "Partial Class Location:";
             this.CombatStlePClass_Button.UseVisualStyleBackColor = true;
+            this.CombatStlePClass_Button.Click += new System.EventHandler(this.CombatStlePClass_Button_Click);
             // 
             // CombatStylePClassIn_Text
             // 
@@ -664,7 +680,7 @@
             this.CombatStyleSaveAs_Button.Name = "CombatStyleSaveAs_Button";
             this.CombatStyleSaveAs_Button.Size = new System.Drawing.Size(111, 23);
             this.CombatStyleSaveAs_Button.TabIndex = 65;
-            this.CombatStyleSaveAs_Button.Text = "Save As";
+            this.CombatStyleSaveAs_Button.Text = "Save List As";
             this.CombatStyleSaveAs_Button.UseVisualStyleBackColor = true;
             this.CombatStyleSaveAs_Button.Click += new System.EventHandler(this.CombatStyleSaveAs_Button_Click_1);
             // 
@@ -676,6 +692,7 @@
             this.CombatStyleAnimation_Button.TabIndex = 53;
             this.CombatStyleAnimation_Button.Text = "Animation";
             this.CombatStyleAnimation_Button.UseVisualStyleBackColor = true;
+            this.CombatStyleAnimation_Button.Click += new System.EventHandler(this.CombatStyleAnimation_Button_Click_1);
             // 
             // CreateCombatStyle_L
             // 
@@ -683,7 +700,7 @@
             this.CreateCombatStyle_L.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateCombatStyle_L.Location = new System.Drawing.Point(298, 50);
             this.CreateCombatStyle_L.Name = "CreateCombatStyle_L";
-            this.CreateCombatStyle_L.Size = new System.Drawing.Size(188, 25);
+            this.CreateCombatStyle_L.Size = new System.Drawing.Size(187, 25);
             this.CreateCombatStyle_L.TabIndex = 55;
             this.CreateCombatStyle_L.Text = "Create Combat Style";
             // 
@@ -703,15 +720,15 @@
             this.CombatStyles_L.TabIndex = 21;
             this.CombatStyles_L.Text = "Combat Styles List";
             // 
-            // CombatStyleSave_Button
+            // CombatStyleAddTo_Button
             // 
-            this.CombatStyleSave_Button.Location = new System.Drawing.Point(229, 347);
-            this.CombatStyleSave_Button.Name = "CombatStyleSave_Button";
-            this.CombatStyleSave_Button.Size = new System.Drawing.Size(155, 23);
-            this.CombatStyleSave_Button.TabIndex = 51;
-            this.CombatStyleSave_Button.Text = "Save CombatStyle";
-            this.CombatStyleSave_Button.UseVisualStyleBackColor = true;
-            this.CombatStyleSave_Button.Click += new System.EventHandler(this.CombatStyleSave_Button_Click);
+            this.CombatStyleAddTo_Button.Location = new System.Drawing.Point(229, 347);
+            this.CombatStyleAddTo_Button.Name = "CombatStyleAddTo_Button";
+            this.CombatStyleAddTo_Button.Size = new System.Drawing.Size(155, 23);
+            this.CombatStyleAddTo_Button.TabIndex = 51;
+            this.CombatStyleAddTo_Button.Text = "Add CombatStyle To List";
+            this.CombatStyleAddTo_Button.UseVisualStyleBackColor = true;
+            this.CombatStyleAddTo_Button.Click += new System.EventHandler(this.CombatStyleSave_Button_Click);
             // 
             // CombatStyleElemental_L
             // 
@@ -728,6 +745,7 @@
             this.CombatStyleComAttrFireIn_Num.Name = "CombatStyleComAttrFireIn_Num";
             this.CombatStyleComAttrFireIn_Num.Size = new System.Drawing.Size(57, 20);
             this.CombatStyleComAttrFireIn_Num.TabIndex = 56;
+            this.CombatStyleComAttrFireIn_Num.ValueChanged += new System.EventHandler(this.CombatStyleComAttrFireIn_Num_ValueChanged);
             // 
             // CombatStyleComAttrFire_L
             // 
@@ -1585,9 +1603,9 @@
             this.ItemPanel.Controls.Add(this.WeaponPanel);
             this.ItemPanel.Controls.Add(this.ItemSub_Panel);
             this.ItemPanel.Controls.Add(this.ArmorPanel);
-            this.ItemPanel.Location = new System.Drawing.Point(17, 73);
+            this.ItemPanel.Location = new System.Drawing.Point(12, 73);
             this.ItemPanel.Name = "ItemPanel";
-            this.ItemPanel.Size = new System.Drawing.Size(898, 454);
+            this.ItemPanel.Size = new System.Drawing.Size(903, 483);
             this.ItemPanel.TabIndex = 53;
             // 
             // ItemSub_Panel
@@ -1619,7 +1637,7 @@
             this.checkBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkBox2.Location = new System.Drawing.Point(573, 17);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(130, 25);
+            this.checkBox2.Size = new System.Drawing.Size(131, 25);
             this.checkBox2.TabIndex = 3;
             this.checkBox2.Text = "Inventory Use";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -2298,6 +2316,15 @@
             this.ItemSave_Button.Text = "Save Item";
             this.ItemSave_Button.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(400, 384);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 23);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "Save List";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ItemGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2523,7 +2550,7 @@
         private System.Windows.Forms.Button CombatStyleAnimation_Button;
         private System.Windows.Forms.Label CreateCombatStyle_L;
         private System.Windows.Forms.TextBox CombatStyleAnimIn_Text;
-        private System.Windows.Forms.Button CombatStyleSave_Button;
+        private System.Windows.Forms.Button CombatStyleAddTo_Button;
         private System.Windows.Forms.Label CombatStyleElemental_L;
         private System.Windows.Forms.NumericUpDown CombatStyleComAttrFireIn_Num;
         private System.Windows.Forms.Label CombatStyleComAttrFire_L;
@@ -2612,7 +2639,9 @@
         private System.Windows.Forms.NumericUpDown numericUpDown9;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.NumericUpDown numericUpDown10;
-        private System.Windows.Forms.Button LoadCombatStyle_Button;
+        private System.Windows.Forms.Button LoadCombatStyleList_Button;
+        private System.Windows.Forms.Button EditCombatStyle;
+        private System.Windows.Forms.Button button1;
 
     }
 }

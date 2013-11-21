@@ -17,20 +17,19 @@ namespace ItemGenerator
     {
         public ItemGenerator()
         {
-            InitializeComponent();
+            
+            WeaponCombatStyles = new List<CombatStyle>();
             CombatStyles = new List<CombatStyle>();
-          
+            InitializeComponent();
+            
 
-            OpenFileDialog aFile = new OpenFileDialog();
-            aFile.ShowDialog();
-            FileStream comIn = (FileStream) aFile.OpenFile();
-            DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(List<CombatStyle>));
-            List<CombatStyle> comList = new List<CombatStyle>((List<CombatStyle>)deserializer.ReadObject(comIn));
-
-            for (int i = 0; i < comList.Count; i++)
-                CombatStyles_List.Items.Add(comList[i].Name);
+            CombatStyles_List.DisplayMember = "Name";
+            WeapCombatStyles_List.DisplayMember = "Name";
             
         }
+
+        List<CombatStyle> CombatStyles;
+        List<CombatStyle> WeaponCombatStyles;
 
         private void ItemTypeIn_Drop_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -75,25 +74,20 @@ namespace ItemGenerator
         private void AddCombatStyle_Button_Click(object sender, EventArgs e)
         {
             if(CombatStyles_List.SelectedItem!=null)
-                if(!WeapCombatStyles_List.Items.Contains(CombatStyles_List.SelectedItem))
-                    WeapCombatStyles_List.Items.Add(CombatStyles_List.SelectedItem);
+                if (!WeapCombatStyles_List.Items.Contains(CombatStyles_List.SelectedItem))
+                {
+                    WeaponCombatStyles.Add((CombatStyle)CombatStyles_List.SelectedItem);
+                    WeapCombatStyles_List.DataSource = new List<CombatStyle>(WeaponCombatStyles);
+                }
         }
 
         private void WeapRemoveCombatStyle_Button_Click(object sender, EventArgs e)
         {
-            if(WeapCombatStyles_List.SelectedItem!=null)
-            WeapCombatStyles_List.Items.Remove(WeapCombatStyles_List.SelectedItem);
-        }
-
-        private void CombatStyleAnimation_Button_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog anime = new OpenFileDialog();
-
-            if(anime.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (WeapCombatStyles_List.SelectedItem != null)
             {
-                    CombatStyleAnimIn_Text.Text = anime.FileName;
+                WeaponCombatStyles.Remove((CombatStyle)WeapCombatStyles_List.SelectedItem);
+                WeapCombatStyles_List.DataSource = new List<CombatStyle>(WeaponCombatStyles);
             }
-        
         }
 
         private void ItemGenImage_Button_Click(object sender, EventArgs e)
@@ -124,20 +118,29 @@ namespace ItemGenerator
             if (SaveDialog.FileName != "")
             {      
                 CombatAttributes Attri = new CombatAttributes(CombatStyleComAttrFireIn_Num.Value, CombatStyleComAttrIceIn_Num.Value, CombatStyleComAttrAirIn_Num.Value, CombatStyleComAttrEarthIn_Num.Value, CombatStyleComAttrSlashIn_Num.Value, CombatStyleComAttrBashIn_Num.Value, CombatStyleComAttrPierceIn_Num.Value);
+               
                 String Name = CombatStyleNameIn_Text.Text;
                 String pFileLocation = CombatStylePClassIn_Text.Text;
                 String animeFileLocation = CombatStyleAnimIn_Text.Text;
+
                 CombatStyle style = new CombatStyle(Attri, Name ,pFileLocation, animeFileLocation);
                 
-                CombatStyles.Add(style);
-                FileStream FileOut = (FileStream) SaveDialog.OpenFile();
+                if (!CombatStyles.Contains(style))
+                {
+                    CombatStyles.Add(style);
+                }
+                
+                using(
+                    FileStream FileOut = (FileStream) SaveDialog.OpenFile()
+                ){
                 DataContractJsonSerializer serializer = new DataContractJsonSerializer(typeof(List<CombatStyle>));
-                serializer.WriteObject(FileOut, style);
+                serializer.WriteObject(FileOut, CombatStyles);
+                }
 
             }            
             
         }
-        List<CombatStyle> CombatStyles;
+        
 
         private void ArmorPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -146,20 +149,100 @@ namespace ItemGenerator
 
         private void CombatStyles_List_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            
             
         }
 
         private void CombatStyleSave_Button_Click(object sender, EventArgs e)
         {
-            CombatAttributes Attri = new CombatAttributes(CombatStyleComAttrFireIn_Num.Value, CombatStyleComAttrIceIn_Num.Value, CombatStyleComAttrAirIn_Num.Value, CombatStyleComAttrEarthIn_Num.Value, CombatStyleComAttrSlashIn_Num.Value, CombatStyleComAttrBashIn_Num.Value, CombatStyleComAttrPierceIn_Num.Value);
-            String Name = CombatStyleNameIn_Text.Text;
-            String pFileLocation = CombatStylePClassIn_Text.Text;
-            String animeFileLocation = CombatStyleAnimIn_Text.Text;
-            CombatStyle style = new CombatStyle(Attri, Name, pFileLocation, animeFileLocation);
+            if (CombatStyleNameIn_Text.Text != "")
+            {
+                CombatAttributes Attri = new CombatAttributes(CombatStyleComAttrFireIn_Num.Value, CombatStyleComAttrIceIn_Num.Value, CombatStyleComAttrAirIn_Num.Value, CombatStyleComAttrEarthIn_Num.Value, CombatStyleComAttrSlashIn_Num.Value, CombatStyleComAttrBashIn_Num.Value, CombatStyleComAttrPierceIn_Num.Value);
+                String Name = CombatStyleNameIn_Text.Text;
+                String pFileLocation = CombatStylePClassIn_Text.Text;
+                String animeFileLocation = CombatStyleAnimIn_Text.Text;
+                CombatStyle style = new CombatStyle(Attri, Name, pFileLocation, animeFileLocation);
 
-            CombatStyles.Add(style);
-            
+                bool OK = true;
+
+                foreach (CombatStyle styleCompare in CombatStyles)
+                {
+                    if (styleCompare.Equals(style))
+                    {
+                        if (MessageBox.Show("Would you like to replace the combat style on the list?", "Warning", MessageBoxButtons.YesNo) == DialogResult.OK)
+                        {
+                            CombatStyles.Remove(styleCompare);
+                        }
+                        else
+                            OK = false;
+                    }
+                }
+
+                if (OK)
+                {
+                    CombatStyles.Add(style);
+                    CombatStyles_List.DataSource = new List<CombatStyle>(CombatStyles);
+                }
+            }
+      
+        }
+
+        private void LoadCombatStyle_Button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog LoadDialog = new OpenFileDialog();
+            LoadDialog.ShowDialog();
+            using (
+            FileStream FileIn = (FileStream)LoadDialog.OpenFile())
+            {
+                DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(List<CombatStyle>));
+
+                CombatStyles = (List<CombatStyle>)ser.ReadObject(FileIn);
+                CombatStyles_List.DataSource = CombatStyles;
+            }
+        }
+
+        private void LoadCombatStyle_Click(object sender, EventArgs e)
+        {
+            CombatStyle inCom = new CombatStyle((CombatStyle)CombatStyles_List.SelectedItem);
+            CombatStyleNameIn_Text.Text = inCom.Name;
+
+            CombatStyleComAttrFireIn_Num.Value = inCom.Attributes.elements.Fire;
+            CombatStyleComAttrAirIn_Num.Value = inCom.Attributes.elements.Air;
+            CombatStyleComAttrEarthIn_Num.Value = inCom.Attributes.elements.Earth;
+            CombatStyleComAttrIceIn_Num.Value = inCom.Attributes.elements.Ice;
+
+            CombatStyleComAttrSlashIn_Num.Value = inCom.Attributes.normal.Slashing;
+            CombatStyleComAttrBashIn_Num.Value = inCom.Attributes.normal.Bashing;
+            CombatStyleComAttrPierceIn_Num.Value = inCom.Attributes.normal.Piercing;
+
+            CombatStylePClassIn_Text.Text = inCom.PartialClassLocation;
+            CombatStyleAnimIn_Text.Text = inCom.Animation;
+
+        }
+
+        private void CombatStyleComAttrFireIn_Num_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CombatStyleAnimation_Button_Click_1(object sender, EventArgs e)
+        {
+            OpenFileDialog anime = new OpenFileDialog();
+
+            if (anime.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                CombatStyleAnimIn_Text.Text = anime.FileName;
+            }
+        }
+
+        private void CombatStlePClass_Button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog PClass = new OpenFileDialog();
+
+            if (PClass.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                CombatStylePClassIn_Text.Text = PClass.FileName;
+            }
         }
        
        
