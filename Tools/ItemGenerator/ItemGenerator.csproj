@@ -50,6 +50,10 @@
     <Compile Include="..\..\CharacterAttributes.cs">
       <Link>CharacterAttributes.cs</Link>
     </Compile>
+    <Compile Include="..\..\WeaponSkills.cs">
+      <Link>WeaponSkills.cs</Link>
+    </Compile>
+    <Compile Include="Armor.cs" />
     <Compile Include="CombatAttributes.cs" />
     <Compile Include="CombatStyle.cs" />
     <Compile Include="Form1.cs">
