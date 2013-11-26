@@ -1,5 +1,5 @@
 ﻿/*
-   Copyright 2013 Luke De Mouy
+   Copyright 2013 Glendale Community College Computer Science Organization
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
