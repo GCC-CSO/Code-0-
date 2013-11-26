@@ -26,9 +26,13 @@ namespace ItemGenerator
 
         #region Properties
         [DataMember]
-        CombatAttributes WeaponAttributes;
+        CombatAttributes WeaponAttributes { get; set; }
         [DataMember]
-        List<CombatStyle> CombatStyles;
+        List<CombatStyle> CombatStyles { get; set; }
+        [DataMember]
+        bool TwoHanded { get; set; }
+        [DataMember]
+        bool Consumable { get; set; }
         #endregion
     }
 }

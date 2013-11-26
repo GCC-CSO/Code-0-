@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\..\CharacterAttributes.cs">
+      <Link>CharacterAttributes.cs</Link>
+    </Compile>
     <Compile Include="CombatAttributes.cs" />
     <Compile Include="CombatStyle.cs" />
     <Compile Include="Form1.cs">
