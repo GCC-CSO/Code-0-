@@ -56,6 +56,8 @@
             this.WeapNormal_L = new System.Windows.Forms.Label();
             this.WeapComAttrSlash_L = new System.Windows.Forms.Label();
             this.CombatStyle_Panel = new System.Windows.Forms.Panel();
+            this.DeleteCombateStyle_Button = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.EditCombatStyle = new System.Windows.Forms.Button();
             this.LoadCombatStyleList_Button = new System.Windows.Forms.Button();
             this.AddCombatStyle_Button = new System.Windows.Forms.Button();
@@ -99,8 +101,6 @@
             this.ItemNameIn_Text = new System.Windows.Forms.TextBox();
             this.ItemLoad_Button = new System.Windows.Forms.Button();
             this.ArmorPanel = new System.Windows.Forms.Panel();
-            this.ArmorDefense_Num = new System.Windows.Forms.NumericUpDown();
-            this.ArmorDefense_L = new System.Windows.Forms.Label();
             this.ArmorBonus_Panel = new System.Windows.Forms.Panel();
             this.ArmorBonusFortitudeIn_Num = new System.Windows.Forms.NumericUpDown();
             this.ArmorBonusCombAttri_L = new System.Windows.Forms.Label();
@@ -231,7 +231,7 @@
             this.ItemGenImageIn_Text = new System.Windows.Forms.TextBox();
             this.ItemSaveAs_Button = new System.Windows.Forms.Button();
             this.ItemSave_Button = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.WeaponPanel.SuspendLayout();
             this.SubWeaponPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.WeapComAttrFireIn_Num)).BeginInit();
@@ -252,7 +252,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemWeightIn_Num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemValueIn_Num)).BeginInit();
             this.ArmorPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArmorDefense_Num)).BeginInit();
             this.ArmorBonus_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArmorBonusFortitudeIn_Num)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ArmorBonusStrengthIn_Num)).BeginInit();
@@ -565,6 +564,7 @@
             // CombatStyle_Panel
             // 
             this.CombatStyle_Panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CombatStyle_Panel.Controls.Add(this.DeleteCombateStyle_Button);
             this.CombatStyle_Panel.Controls.Add(this.button1);
             this.CombatStyle_Panel.Controls.Add(this.EditCombatStyle);
             this.CombatStyle_Panel.Controls.Add(this.LoadCombatStyleList_Button);
@@ -602,11 +602,31 @@
             this.CombatStyle_Panel.Size = new System.Drawing.Size(541, 427);
             this.CombatStyle_Panel.TabIndex = 22;
             // 
+            // DeleteCombateStyle_Button
+            // 
+            this.DeleteCombateStyle_Button.Location = new System.Drawing.Point(124, 387);
+            this.DeleteCombateStyle_Button.Name = "DeleteCombateStyle_Button";
+            this.DeleteCombateStyle_Button.Size = new System.Drawing.Size(69, 23);
+            this.DeleteCombateStyle_Button.TabIndex = 73;
+            this.DeleteCombateStyle_Button.Text = "Delete";
+            this.DeleteCombateStyle_Button.UseVisualStyleBackColor = true;
+            this.DeleteCombateStyle_Button.Click += new System.EventHandler(this.DeleteCombateStyle_Button_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(400, 384);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 23);
+            this.button1.TabIndex = 72;
+            this.button1.Text = "Save List";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // EditCombatStyle
             // 
             this.EditCombatStyle.Location = new System.Drawing.Point(18, 384);
             this.EditCombatStyle.Name = "EditCombatStyle";
-            this.EditCombatStyle.Size = new System.Drawing.Size(175, 23);
+            this.EditCombatStyle.Size = new System.Drawing.Size(99, 23);
             this.EditCombatStyle.TabIndex = 71;
             this.EditCombatStyle.Text = "Edit Combat Style";
             this.EditCombatStyle.UseVisualStyleBackColor = true;
@@ -976,8 +996,6 @@
             // 
             // ArmorPanel
             // 
-            this.ArmorPanel.Controls.Add(this.ArmorDefense_Num);
-            this.ArmorPanel.Controls.Add(this.ArmorDefense_L);
             this.ArmorPanel.Controls.Add(this.ArmorBonus_Panel);
             this.ArmorPanel.Controls.Add(this.ArmorResistance_Panel);
             this.ArmorPanel.Controls.Add(this.ArmorBonus_L);
@@ -989,24 +1007,6 @@
             this.ArmorPanel.Size = new System.Drawing.Size(890, 448);
             this.ArmorPanel.TabIndex = 57;
             this.ArmorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ArmorPanel_Paint);
-            // 
-            // ArmorDefense_Num
-            // 
-            this.ArmorDefense_Num.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArmorDefense_Num.Location = new System.Drawing.Point(126, 326);
-            this.ArmorDefense_Num.Name = "ArmorDefense_Num";
-            this.ArmorDefense_Num.Size = new System.Drawing.Size(35, 29);
-            this.ArmorDefense_Num.TabIndex = 117;
-            // 
-            // ArmorDefense_L
-            // 
-            this.ArmorDefense_L.AutoSize = true;
-            this.ArmorDefense_L.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ArmorDefense_L.Location = new System.Drawing.Point(28, 328);
-            this.ArmorDefense_L.Name = "ArmorDefense_L";
-            this.ArmorDefense_L.Size = new System.Drawing.Size(66, 21);
-            this.ArmorDefense_L.TabIndex = 118;
-            this.ArmorDefense_L.Text = "Defense";
             // 
             // ArmorBonus_Panel
             // 
@@ -1600,9 +1600,9 @@
             // ItemPanel
             // 
             this.ItemPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ItemPanel.Controls.Add(this.WeaponPanel);
             this.ItemPanel.Controls.Add(this.ItemSub_Panel);
             this.ItemPanel.Controls.Add(this.ArmorPanel);
+            this.ItemPanel.Controls.Add(this.WeaponPanel);
             this.ItemPanel.Location = new System.Drawing.Point(12, 73);
             this.ItemPanel.Name = "ItemPanel";
             this.ItemPanel.Size = new System.Drawing.Size(903, 483);
@@ -2304,7 +2304,7 @@
             this.ItemSaveAs_Button.Name = "ItemSaveAs_Button";
             this.ItemSaveAs_Button.Size = new System.Drawing.Size(159, 23);
             this.ItemSaveAs_Button.TabIndex = 63;
-            this.ItemSaveAs_Button.Text = "Save Item As";
+            this.ItemSaveAs_Button.Text = "Save Item Lst";
             this.ItemSaveAs_Button.UseVisualStyleBackColor = true;
             // 
             // ItemSave_Button
@@ -2313,23 +2313,25 @@
             this.ItemSave_Button.Name = "ItemSave_Button";
             this.ItemSave_Button.Size = new System.Drawing.Size(159, 23);
             this.ItemSave_Button.TabIndex = 62;
-            this.ItemSave_Button.Text = "Save Item";
+            this.ItemSave_Button.Text = "Save Item To List";
             this.ItemSave_Button.UseVisualStyleBackColor = true;
+            this.ItemSave_Button.Click += new System.EventHandler(this.ItemSave_Button_Click);
             // 
-            // button1
+            // button2
             // 
-            this.button1.Location = new System.Drawing.Point(400, 384);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 23);
-            this.button1.TabIndex = 72;
-            this.button1.Text = "Save List";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(401, 641);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(159, 23);
+            this.button2.TabIndex = 68;
+            this.button2.Text = "Save As Item Lst";
+            this.button2.UseVisualStyleBackColor = true;
             // 
             // ItemGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1127, 694);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.ItemGenImage_Button);
             this.Controls.Add(this.ItemInvImageIn_Text);
             this.Controls.Add(this.ItemInvImage_Button);
@@ -2375,7 +2377,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemValueIn_Num)).EndInit();
             this.ArmorPanel.ResumeLayout(false);
             this.ArmorPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ArmorDefense_Num)).EndInit();
             this.ArmorBonus_Panel.ResumeLayout(false);
             this.ArmorBonus_Panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ArmorBonusFortitudeIn_Num)).EndInit();
@@ -2529,8 +2530,6 @@
         private System.Windows.Forms.NumericUpDown ArmorResistanceSlashIn_Num;
         private System.Windows.Forms.NumericUpDown ArmorResistanceBashIn_Num;
         private System.Windows.Forms.Label ArmorResistanceBash_L;
-        private System.Windows.Forms.NumericUpDown ArmorDefense_Num;
-        private System.Windows.Forms.Label ArmorDefense_L;
         private System.Windows.Forms.Panel ArmorBonus_Panel;
         private System.Windows.Forms.NumericUpDown ArmorBonusFortitudeIn_Num;
         private System.Windows.Forms.Label ArmorBonusCombAttri_L;
@@ -2642,6 +2641,8 @@
         private System.Windows.Forms.Button LoadCombatStyleList_Button;
         private System.Windows.Forms.Button EditCombatStyle;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button DeleteCombateStyle_Button;
+        private System.Windows.Forms.Button button2;
 
     }
 }
