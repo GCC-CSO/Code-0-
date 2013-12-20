@@ -23,7 +23,7 @@ using System.Runtime.Serialization;
 namespace ItemGenerator
 {
     [DataContract]
-    partial class CombatStyle:IComparable
+    public partial class CombatStyle:IComparable
     {
         #region constructors
         public CombatStyle()
@@ -49,6 +49,7 @@ namespace ItemGenerator
             this.Animation = Animation;
         }
         #endregion
+        #region methods
         public int CompareTo(object obj)
         {
             if (obj == null)
@@ -63,6 +64,13 @@ namespace ItemGenerator
                 return 1;
         }
         
+        public CombatAttributes Attack(CombatAttributes weaponStats)
+        {
+            CombatAttributes AttackAttributes = new CombatAttributes();
+            
+            return new CombatAttributes();
+        }
+
         public override bool Equals(object obj)
         {
             CombatStyle other = obj as CombatStyle;
@@ -81,10 +89,12 @@ namespace ItemGenerator
             else
                 return false;
         }
+        
         public override int GetHashCode()
         {
-            return 1;
+            return Attributes.GetHashCode() * Name.GetHashCode() * PartialClassLocation.GetHashCode() * Animation.GetHashCode();
         }
+        #endregion
         #region Data Members
         [DataMember]
         public CombatAttributes Attributes {get; set;}

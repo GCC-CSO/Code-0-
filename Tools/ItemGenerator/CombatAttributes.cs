@@ -24,7 +24,7 @@ using System.Runtime.Serialization.Json;
 namespace ItemGenerator
 {   
     [DataContract]
-    class CombatAttributes
+    public class CombatAttributes
     {
         #region Constructors
         public CombatAttributes()

@@ -23,16 +23,22 @@ using System.Runtime.Serialization.Json;
 
 namespace ItemGenerator
 {
+    /// <summary>
+    /// This Class represents a weapon with normal and elemental damage
+    /// </summary>
     [DataContract]
-    class Weapon : Item
+    public class Weapon : Item
     {
         #region Constructors
-        public Weapon()
+        /// <summary>
+        /// 
+        /// </summary>
+        public Weapon():base()
         {
             WeaponAttributes = new CombatAttributes();
             CombatStyles = new List<CombatStyle>();
         }
-        public Weapon(CombatAttributes WeaponAttributes, List<CombatStyle> CombatStyles)
+        public Weapon(CombatAttributes WeaponAttributes, List<CombatStyle> CombatStyles):base()
         {
             this.WeaponAttributes = WeaponAttributes;
             this.CombatStyles = CombatStyles;

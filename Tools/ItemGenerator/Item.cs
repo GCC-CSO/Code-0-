@@ -24,7 +24,7 @@ using System.Runtime.Serialization.Json;
 namespace ItemGenerator
 {
     [DataContract]
-    class Item
+    public class Item
     {
         #region Constructors
         public Item()
@@ -47,15 +47,15 @@ namespace ItemGenerator
 
         #region properties
         [DataMember]
-        String Name { get; set; }
+        public String Name { get; set; }
         [DataMember]
-        String Type { get; set;}
+        public String Type { get; set;}
         [DataMember]
-        String Subtype { get; set;} 
+        public String Subtype { get; set;} 
         [DataMember]
-        Decimal Weight { get; set; }
+        public Decimal Weight { get; set; }
         [DataMember]
-        Decimal Value { get; set; }
+        public Decimal Value { get; set; }
         #endregion
     }
 }

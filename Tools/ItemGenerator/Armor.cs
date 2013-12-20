@@ -18,10 +18,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace ItemGenerator
 {
     using Code0;
+    [DataContract]
     class Armor
     {
         #region constructors
@@ -42,9 +44,13 @@ namespace ItemGenerator
         }
         #endregion
         #region properties
+        [DataMember]
         public CombatAttributes Resistance { get; set; }
+        [DataMember]
         public CombatAttributes Soak { get; set; }
+        [DataMember]
         public CharacterAttributes StatBoost { get; set; }
+        [DataMember]
         public WeaponSkills SkillBoost { get; set; }
         #endregion
     }
