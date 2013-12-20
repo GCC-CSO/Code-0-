@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
+<<<<<<< HEAD
 VisualStudioVersion = 12.0.21005.1
+=======
+VisualStudioVersion = 12.0.20827.3
+>>>>>>> d75e1b85819381f03040f0d3a559eaf3429672db
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Code0", "Code0.csproj", "{9EE4AF9B-93F9-4300-9B53-0E07C1BBFD96}"
 EndProject
@@ -9,8 +13,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CharacterGenerator", "Tools
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItemGenerator", "Tools\ItemGenerator\ItemGenerator.csproj", "{39987620-1A7A-4D9F-B793-DED7CAB793AD}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CombatTests", "..\CombatTests\CombatTests.csproj", "{815C3111-2344-4FF5-A17C-68E4ED2A2842}"
 EndProject
+=======
+>>>>>>> d75e1b85819381f03040f0d3a559eaf3429672db
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +36,13 @@ Global
 		{39987620-1A7A-4D9F-B793-DED7CAB793AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39987620-1A7A-4D9F-B793-DED7CAB793AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39987620-1A7A-4D9F-B793-DED7CAB793AD}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{815C3111-2344-4FF5-A17C-68E4ED2A2842}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{815C3111-2344-4FF5-A17C-68E4ED2A2842}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{815C3111-2344-4FF5-A17C-68E4ED2A2842}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{815C3111-2344-4FF5-A17C-68E4ED2A2842}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+>>>>>>> d75e1b85819381f03040f0d3a559eaf3429672db
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
