@@ -32,7 +32,7 @@ namespace ItemGenerator
         #region Structures
         #region Elemental Damage Structure
         [DataContract]
-        public class Elemental
+        public struct Elemental
         {
             #region constructors
             public Elemental(Decimal Fire, Decimal Ice, Decimal Air, Decimal Earth)
@@ -83,15 +83,9 @@ namespace ItemGenerator
 
         #region Normal Damage Structure
         [DataContract]
-        public class Normal
+        public struct Normal
         {
-            #region constructors
-            public  Normal()
-            {
-                Slashing = 0;
-                Bashing = 0;
-                Piercing = 0;
-            }
+            #region constructors            
             public Normal(Decimal Slashing, Decimal Bashing, Decimal Piercing)
             {
                 this.Slashing = Slashing;
