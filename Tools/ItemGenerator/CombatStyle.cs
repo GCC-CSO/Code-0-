@@ -50,10 +50,15 @@ namespace ItemGenerator
         }
         
         public CombatAttributes Attack(CombatAttributes weaponStats)
-        {
-            CombatAttributes AttackAttributes = new CombatAttributes();
+        {            
+            if (weaponStats == Attributes)
+            {
+                return weaponStats;
+            }
+            CombatAttributes AttackAttributes = weaponStats * Attributes;
             
-            return new CombatAttributes();
+
+            return AttackAttributes;
         }
 
         public override bool Equals(object obj)

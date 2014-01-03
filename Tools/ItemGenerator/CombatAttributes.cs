@@ -32,7 +32,7 @@ namespace ItemGenerator
         #region Structures
         #region Elemental Damage Structure
         [DataContract]
-        public struct Elemental
+        public class Elemental
         {
             #region constructors
             public Elemental(Decimal Fire, Decimal Ice, Decimal Air, Decimal Earth)
@@ -43,6 +43,30 @@ namespace ItemGenerator
                 this.Earth = Earth;
 
             }
+            #endregion
+            #region Function Members
+            #region Operators
+            public static Elemental operator +(Elemental first, Elemental other)
+            {
+                return new Elemental(first.Fire + other.Fire, first.Ice + other.Ice, 
+                    first.Air + other.Air, first.Earth + other.Earth);
+            }
+            public static Elemental operator *(Elemental first, Elemental other)
+            {
+                return new Elemental(first.Fire * other.Fire, first.Ice * other.Ice,
+                    first.Air * other.Air, first.Earth * other.Earth);
+            }
+            public static Elemental operator -(Elemental first, Elemental other)
+            {
+                return new Elemental(first.Fire - other.Fire, first.Ice - other.Ice,
+                    first.Air - other.Air, first.Earth - other.Earth);
+            }
+            public static Elemental operator /(Elemental first, Elemental other)
+            {
+                return new Elemental(first.Fire / other.Fire, first.Ice / other.Ice,
+                    first.Air / other.Air, first.Earth / other.Earth);
+            }
+            #endregion
             #endregion
             #region Data Members
             [DataMember]
@@ -59,15 +83,42 @@ namespace ItemGenerator
 
         #region Normal Damage Structure
         [DataContract]
-        public struct Normal
+        public class Normal
         {
             #region constructors
+            public  Normal()
+            {
+                Slashing = 0;
+                Bashing = 0;
+                Piercing = 0;
+            }
             public Normal(Decimal Slashing, Decimal Bashing, Decimal Piercing)
             {
                 this.Slashing = Slashing;
                 this.Bashing = Bashing;
                 this.Piercing = Piercing;
             }
+            #endregion
+            #region Function Members
+            #region Operators
+            public static Normal operator +(Normal first, Normal other)
+            {
+                return new Normal(first.Slashing + other.Slashing, first.Bashing + other.Bashing, first.Piercing + other.Piercing);
+            }
+            public static Normal operator *(Normal first, Normal other)
+            {
+                return new Normal(first.Slashing * other.Slashing, first.Bashing * other.Bashing, first.Piercing * other.Piercing);
+            }
+            public static Normal operator -(Normal first, Normal other)
+            {
+                return new Normal(first.Slashing - other.Slashing, first.Bashing - other.Bashing, first.Piercing - other.Piercing);
+
+            }
+            public static Normal operator /(Normal first, Normal other)
+            {
+                return new Normal(first.Slashing / other.Slashing, first.Bashing / other.Bashing, first.Piercing / other.Piercing);
+            }
+            #endregion
             #endregion
             #region Data Members
             [DataMember]
@@ -80,7 +131,26 @@ namespace ItemGenerator
         }
         #endregion
         #endregion
-
+        #region Function Members
+        #region Operators
+        public static CombatAttributes operator +(CombatAttributes first, CombatAttributes other)
+        {
+            return new CombatAttributes(first.elements + other.elements, first.normal + other.normal);
+        }
+        public static CombatAttributes operator *(CombatAttributes first, CombatAttributes other)
+        {
+            return new CombatAttributes(first.elements * other.elements, first.normal * other.normal);
+        }
+        public static CombatAttributes operator -(CombatAttributes first, CombatAttributes other)
+        {
+            return new CombatAttributes(first.elements - other.elements, first.normal - other.normal);
+        }
+        public static CombatAttributes operator /(CombatAttributes first, CombatAttributes other)
+        {
+            return new CombatAttributes(first.elements / other.elements, first.normal / other.normal);
+        }
+        #endregion
+        #endregion
         #region Data Members
         [DataMember]
         public Elemental elements { get; set; }
